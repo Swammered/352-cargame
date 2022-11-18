@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Package
   - Person
+  - Boost
   layers:
   - Default
   - TransparentFX
