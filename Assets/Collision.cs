@@ -7,9 +7,7 @@ public class Collision : MonoBehaviour
     
     [SerializeField] Color hasPackageColor = Color.green;
     [SerializeField] Color noPackageColor = Color.white;
-
     SpriteRenderer spriteRenderer;
-
     bool hasPackage = false;
     private void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>(); 
@@ -19,6 +17,7 @@ public class Collision : MonoBehaviour
     {
         Debug.Log("OUCH");
     }
+
 
     private void OnTriggerEnter2D(Collider2D other) {
 
