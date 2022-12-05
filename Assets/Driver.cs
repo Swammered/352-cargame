@@ -10,7 +10,8 @@ public class Driver : MonoBehaviour
     [SerializeField] float boostSpeed = 50f;
 
     float currentSpeed;
-    public float theCountdown = 10;
+    public float theCountdown;
+    bool boostActive;
     
     // Start is called before the first frame update
     void Start()
@@ -26,19 +27,24 @@ public class Driver : MonoBehaviour
         transform.Rotate(0,0,-steerAmount);
         transform.Translate(0,moveAmount,0);
 
-
+        if(boostActive){
+            theCountdown -= Time.deltaTime;
+            if(theCountdown <= 0)
+            {
+                Debug.Log("slowing down");
+                currentSpeed = moveSpeed;
+                boostActive = false;
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.gameObject.tag == "Boost"){
+            theCountdown = 5;
             Debug.Log("speed");
             currentSpeed = boostSpeed;
+            boostActive = true;
 
-            theCountdown -= Time.deltaTime;
-          if(theCountdown <= 0)
-          {
-            currentSpeed = moveSpeed;
-          }
         } 
     }
 
